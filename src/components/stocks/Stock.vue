@@ -1,6 +1,6 @@
 <template>
     <v-flex class="pr-3 pb-3" xs12 md6 lg4>
-        <v-card class="gray darken-3 white--text">
+        <v-card class="grey darken-3 white--text">
             <v-card-title class="headline">
                 <strong>{{ stock.name }} <small>(Preço: {{ stock.price | currency }})</small></strong>
             </v-card-title>
