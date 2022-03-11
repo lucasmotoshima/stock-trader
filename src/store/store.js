@@ -9,6 +9,9 @@ import portfolio from './modules/portfolio'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    state: {
+        salvo: false
+    },
     actions,
     modules: {
         stocks,

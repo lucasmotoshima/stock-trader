@@ -17,9 +17,11 @@ export default {
     actions: {
         buyStock({ commit }, order) {
             commit('buyStock', order)
+            localStorage.setItem('salvo', false)
         },
         initStocks({ commit }) {
             commit('setStocks', stocks)
+            localStorage.getItem('salvo')
         },
         randomizeStocks({ commit }) {
             commit('randomizeStocks')
