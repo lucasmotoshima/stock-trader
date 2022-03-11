@@ -1,6 +1,6 @@
 <template>
     <v-flex class="pr-3 pb-3" xs12 md6 lg4>
-        <v-card class="yellow darken-3 white--text">
+        <v-card class="green darken-3 white--text">
             <v-card-title class="headline">
                 <strong>{{ stock.name }} <small>(Preço: {{ stock.price | currency }})</small></strong>
             </v-card-title>
@@ -41,7 +41,6 @@ export default {
                 stockPrice: this.stock.price,
                 quantity: this.quantity
             }
-            //console.log(this.$store.dispatch('buyStock', order))
             this.$store.dispatch('buyStock', order)
             this.quantity = 0
         }

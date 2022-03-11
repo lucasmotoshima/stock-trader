@@ -7,6 +7,29 @@ import Stocks from './components/stocks/Stocks'
 
 Vue.use(Router)
 
+const router = new Router({
+    mode: 'history',
+    routes: [{
+        name: 'inicio',
+        path: '/',
+        components: {
+            default: Home,
+        }
+    }, {
+        path: '/portfolio',
+        //component: Usuario
+        components: {
+            default: Portfolio
+        },
+        props: true,
+    }]
+})
+
+router.beforeEach((to,from, next) => {
+    console.log('antes das rotas -> globals')
+    next()
+})
+
 export default new Router({
     mode: 'history',
     routes: [
