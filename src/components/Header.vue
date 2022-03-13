@@ -43,7 +43,6 @@
 import {mapActions} from 'vuex'
 
 export default {
-    props: ['salvo'],
     computed: {
         funds() {
             return this.$store.getters.funds

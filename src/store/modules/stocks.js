@@ -1,9 +1,6 @@
 import stocks from '../../data/stocks'
 
 export default {
-    state: {
-        stocks: []
-    },
     mutations: {
         setStocks(state, stocks) {
             state.stocks = stocks
@@ -17,11 +14,12 @@ export default {
     actions: {
         buyStock({ commit }, order) {
             commit('buyStock', order)
-            localStorage.setItem('salvo', false)
         },
         initStocks({ commit }) {
             commit('setStocks', stocks)
-            localStorage.getItem('salvo')
+        },
+        initSaved({ commit }) {
+            commit('setFlag', false)
         },
         randomizeStocks({ commit }) {
             commit('randomizeStocks')
