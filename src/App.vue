@@ -1,6 +1,6 @@
 <template>
 	<v-app>
-		<Header :salvo="salvo" @setarSalvo="setSalvo"/>
+		<Header />
 		<v-content>
 			<v-container>
 				<transition name="slide" mode="out-in">
@@ -15,30 +15,11 @@
 import Header from './components/Header'
 
 export default {
-	data() {
-		return {
-			salvo: false
-		}
-	},
     components: { Header },
 	created() {
 		this.$store.dispatch('initStocks')
-		localStorage.setItem('salvo', false)
-	},
-	methods: {
-		setSalvo(flag) {
-			console.log('flag:'+ flag)
-			localStorage.setItem('salvo', flag)
-		}
-	},
-	watch: {
-		salvo: {
-			deep: true,
-			handler() {
-				localStorage.setItem('salvo', salvo)
-			}
-		}
-	},
+		this.$store.dispatch('initSaved')
+	}
 }
 </script>
 

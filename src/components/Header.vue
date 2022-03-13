@@ -30,7 +30,7 @@
             <v-layout align-center>
                 <span class="text-uppercase grey--text--darken-2">
                      Saldo:<strong> {{ funds | currency }}</strong>
-                     <small class=""> {{ this.salvo }}</small>
+                     <small class=""> {{ saved }}</small>
                      
                 </span>
             </v-layout>
@@ -44,28 +44,27 @@
 import {mapActions} from 'vuex'
 
 export default {
-    props: ['salvo'],
     computed: {
         funds() {
             return this.$store.getters.funds
+        },
+        saved() {
+            return this.$store.getters.saved
         }
     },
     methods: {
-        ...mapActions(['randomizeStocks','loadData']),
+        ...mapActions(['randomizeStocks','loadData','setarSalvo']),
         endDay() {
             this.randomizeStocks()
-            this.$emit('setarSalvo', false)
-            //inserir MUTATION AQUI
-            this.salvo = false
+            this.setarSalvo(false)
         },
         saveData() {
             const { funds, stockPortfolio, stocks } = this.$store.getters
             this.$http.put('data.json', { funds, stockPortfolio, stocks })
         },
         loadDataLocal() {
-            this.$emit('setarSalvo', true)
-            //inserir MUTATION AQUI
-            this.salvo = true
+            this.loadData()
+            this.setarSalvo(true)
         }
     }
 }
