@@ -9,6 +9,8 @@ export default {
             state.stocks.forEach(stock => {
                 stock.price = Math.round(stock.price * (1 + Math.random() - 0.5))
             })
+            // eslint-disable-next-line
+            console.log(state.stocks)
         }
     },
     actions: {

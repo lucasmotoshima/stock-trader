@@ -64,7 +64,7 @@ export default {
         },
         loadDataLocal() {
             this.loadData()
-            this.setarSalvo(true)
+            //this.setarSalvo(true)
         }
     }
 }
