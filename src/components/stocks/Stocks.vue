@@ -13,6 +13,17 @@ export default {
         stocks() {
             return this.$store.getters.stocks
         }
+    },
+    beforeRouteLeave(to, from, next){
+        if(this.salvo){
+            next()
+        }else{
+            if(confirm('Tem certeza?')){
+                next(true)
+            }else{
+                next(false)
+            }
+        }
     }
 }
 </script>
