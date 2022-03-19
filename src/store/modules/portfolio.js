@@ -1,7 +1,8 @@
 export default {
     state: {
         funds: 10000,
-        stocks: []
+        stocks: [],
+        saved: false
     },
     mutations: {
         buyStock(state, { stockId, quantity, stockPrice }) {
@@ -28,11 +29,17 @@ export default {
         setPortfolio(state, portfolio) {
             state.funds = portfolio.funds
             state.stocks = portfolio.stockPortfolio ? portfolio.stockPortfolio : []
+        },
+        setFlag(state, flag) {
+            state.saved = flag
         }
     },
     actions: {
         sellStock({ commit }, order) {
             commit('sellStock', order)
+        },
+        setarSalvo({ commit }, flag) {
+            commit('setFlag',flag)
         }
     },
     getters: {
@@ -49,6 +56,9 @@ export default {
         },
         funds(state) {
             return state.funds
+        },
+        saved(state) {
+            return state.saved
         }
     }
 }

@@ -30,6 +30,7 @@
             <v-layout align-center>
                 <span class="text-uppercase grey--text--darken-2">
                      Saldo:<strong> {{ funds | currency }}</strong>
+                     <small class=""> {{ saved }}</small>
                 </span>
             </v-layout>
 
@@ -45,12 +46,16 @@ export default {
     computed: {
         funds() {
             return this.$store.getters.funds
+        },
+        saved() {
+            return this.$store.getters.saved
         }
     },
     methods: {
-        ...mapActions(['randomizeStocks','loadData']),
+        ...mapActions(['randomizeStocks','loadData','setarSalvo']),
         endDay() {
             this.randomizeStocks()
+            this.setarSalvo(false)
         },
         saveData() {
             const { funds, stockPortfolio, stocks } = this.$store.getters
@@ -58,6 +63,7 @@ export default {
         },
         loadDataLocal() {
             this.loadData()
+            this.setarSalvo(true)
         }
     }
 }
